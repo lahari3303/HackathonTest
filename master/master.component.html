@@ -1,0 +1,42 @@
+
+<nav>
+    <button class="btn btn-secondary" (click)="onShow()">{{btnMessage}}</button>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+          
+
+
+            <div>
+                <table border="1">
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Employee Address</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr *ngFor="let emp of employees">
+                        <td>{{emp.id}}</td>
+                        <td>{{emp.Name}}</td>
+                        <td>{{emp.Address}}</td>
+                        <td class="list-group" style="background-color: aqua">
+                            <button class="btn btn-info" (click)="onEdit(emp)">Edit
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </td>
+    
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <app-emp-details [selectedEmp]="selectedEmp" (onDelete)="onDeleteHandler($event)"></app-emp-details>
+        </div>
+        <div *ngIf="toShow" class="col-md-6">
+            <app-addemployee (onAddNew)="onAddHandler($event)"></app-addemployee>
+    </div>
+
+    </div>
+</div>
